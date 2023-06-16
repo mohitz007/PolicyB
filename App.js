@@ -4,13 +4,16 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import persistStore from 'redux-persist/es/persistStore';
+
 import HomeScreen from './src/Screens/HomeScreen';
 import AddTodo from './src/Screens/AddTodo';
 import store from './src/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 
 
-
+let persistor = persistStore(store)
 
 const  App = () => {
 
@@ -29,9 +32,11 @@ const  App = () => {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <StackNavigator />
-      </NavigationContainer>
+      <PersistGate persistor={persistor} >
+        <NavigationContainer>
+          <StackNavigator />
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   )
 }
