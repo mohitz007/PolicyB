@@ -5,8 +5,9 @@ import {
     Text,
     TouchableOpacity,
     View,
+    Image,
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+import Icon from "react-native-vector-icons/MaterialIcons"
 import { useSelector } from 'react-redux';
 import Task from '../components/Task';
 
@@ -23,17 +24,36 @@ import Task from '../components/Task';
 // ];
 
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
 
     const todoList = useSelector((state) => state.reducer);
-    console.log(todoList);
+    // console.log(todoList);
+
+    if (todoList.length === 0) {
+        return (
+            <View style={styles.primaryView}>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>Daily List</Text>
+                </View>
+                <Image
+                    style={{ height: '85%', width: '100%' }}
+                    source={require("../images/background.jpg")}
+                />
+                <View style={styles.footer}>
+                    <TouchableOpacity onPress={() => navigation.navigate("AddTodo")} >
+                        <Icon name="add-circle" size={50} color="white" style={styles.addButton} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
 
     return (
         <View style={styles.primaryView}>
             <View style={styles.header}>
-                <Text>Daily List</Text>
+                <Text style={styles.headerText}>DAILY LIST</Text>
             </View>
-            <Text>UPCOMING</Text>
+            <Text style={styles.headerText2}>UPCOMING</Text>
             <FlatList
                 data={todoList}
                 renderItem={({ item }) => {
@@ -43,7 +63,7 @@ const HomeScreen = ({navigation}) => {
                 }}
                 keyExtractor={item => item.currTime}
             />
-            <Text>COMPLETED</Text>
+            <Text style={styles.headerText2}>COMPLETED</Text>
             <FlatList
                 data={todoList}
                 renderItem={({ item }) => {
@@ -54,8 +74,8 @@ const HomeScreen = ({navigation}) => {
                 keyExtractor={item => item.currTime}
             />
             <View style={styles.footer}>
-                <TouchableOpacity onPress={()=> navigation.navigate("AddTodo")} >
-                    <Icon name="add-circle-outline" size={50} color="white" type='MaterialIcons' />
+                <TouchableOpacity onPress={() => navigation.navigate("AddTodo")} >
+                    <Icon name="add-circle" size={50} color="white" style={styles.addButton} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -70,9 +90,30 @@ const styles = StyleSheet.create({
     },
     header: {
         marginTop: 10,
+        alignItems: 'center',
     },
     footer: {
         alignItems: 'center',
+    },
+    headerText: {
+        color: 'white',
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginTop: 10,
+    },
+    addButton: {
+        shadowColor: 'white',
+        shadowOffset: {width: 2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 20,
+        marginBottom: 10,
+    },
+    headerText2: {
+        fontWeight: 'bold',
+        color: 'white',
+        fontSize: 15,
+        marginLeft: 20,
     },
 });
 
