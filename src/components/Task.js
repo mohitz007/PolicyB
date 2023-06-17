@@ -35,7 +35,7 @@ const Task = ({item}) => {
         <View style={!item.completed? Styles.containerUncompleted : Styles.containerCompleted}>
             {
             !item.completed ?
-            <Icon name="crop-square" type="Ionicons" size={20} onPress={() => handleComplete(item.currTime)} /> 
+            <Icon name="crop-square" type="Ionicons" size={22} onPress={() => handleComplete(item.currTime)} /> 
             : 
             <AntDesign name="checksquareo" size={20} onPress={() => handleUncomplete(item.currTime)} />
             }
@@ -66,9 +66,9 @@ const Styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         alignSelf: "center",
-        borderRadius: 5,
-        paddingHorizontal: 5,
-        height: 70,
+        borderRadius: 7,
+        paddingHorizontal: 7,
+        height: 75,
     },
     containerCompleted: {
         backgroundColor: "#9fd1df",
@@ -79,9 +79,9 @@ const Styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         alignSelf: "center",
-        borderRadius: 5,
-        paddingHorizontal: 5,
-        height: 70,
+        borderRadius: 7,
+        paddingHorizontal: 7,
+        height: 75,
     },
     title: {
         fontSize: 20,
@@ -103,7 +103,7 @@ const Styles = StyleSheet.create({
     textContainer: {
         alignItems: "flex-start",
         alignContent: "flex-start",
-        width: "88%",
+        width: "86%",
         shadowColor: "white",
         shadowOffset: {width: 3, height: 3},
         shadowOpacity: 0.5,

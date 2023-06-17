@@ -37,6 +37,7 @@ const AddTodo = ({navigation}) => {
             autoCapitalize="sentences"
             />
             <TextInput 
+            style={{color:'black'}}
             placeholder="Start typing..."
             onChangeText={setText}
             value={text}
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 10,
+        color: 'black',
     }
 });
 

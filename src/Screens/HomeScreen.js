@@ -36,12 +36,12 @@ const HomeScreen = ({ navigation }) => {
                     <Text style={styles.headerText}>Daily List</Text>
                 </View>
                 <Image
-                    style={{ height: '85%', width: '100%' }}
+                    style={{ height: '80%', width: '100%' }}
                     source={require("../images/background.jpg")}
                 />
-                <View style={styles.footer}>
+                <View style={[styles.footer,{paddingBottom:10}]}>
                     <TouchableOpacity onPress={() => navigation.navigate("AddTodo")} >
-                        <Icon name="add-circle" size={50} color="white" style={styles.addButton} />
+                        <Icon name="add-circle" size={60} color="white" style={styles.addButton} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -75,7 +75,7 @@ const HomeScreen = ({ navigation }) => {
             />
             <View style={styles.footer}>
                 <TouchableOpacity onPress={() => navigation.navigate("AddTodo")} >
-                    <Icon name="add-circle" size={50} color="white" style={styles.addButton} />
+                    <Icon name="add-circle" size={60} color="white" style={styles.addButton} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -94,6 +94,8 @@ const styles = StyleSheet.create({
     },
     footer: {
         alignItems: 'center',
+        // borderColor: "black",
+        // height: 200,
     },
     headerText: {
         color: 'white',
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         elevation: 20,
-        marginBottom: 10,
+        marginBottom: 30,
     },
     headerText2: {
         fontWeight: 'bold',
