@@ -4,6 +4,7 @@ import { Icon } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import AntDesign from "react-native-vector-icons/AntDesign"
 import { useDispatch } from "react-redux";
+import moment from "moment";
 import { delete_todo } from "../redux/action";
 import { complete_todo } from "../redux/action";
 import { uncomplete_todo } from "../redux/action";
@@ -27,6 +28,9 @@ const Task = ({item}) => {
         dispatch(uncomplete_todo(currTime));
     };
 
+    let date = moment.unix(item.currTime/1000).format('MMMM Do, h:mm a');
+    // console.log(date);
+
     return (
         <View style={!item.completed? Styles.containerUncompleted : Styles.containerCompleted}>
             {
@@ -42,7 +46,9 @@ const Task = ({item}) => {
                     :
                     <Text style={[Styles.title,{textDecorationLine:"line-through",textDecorationStyle:"solid"}]}>{item.title}</Text>
                 }
-                <Text style={Styles.text}>{item.text}</Text>
+                <Text style={Styles.text}>{item.text.length>40?item.text.substring(0, 40) + "...": item.text}</Text>
+                <Text style={Styles.date}>{date}</Text>
+
             </View>
             <Ionicons name="trash-bin-outline" size={20} onPress={() => handleDelete(item.currTime)} />
         </View>
@@ -62,7 +68,7 @@ const Styles = StyleSheet.create({
         alignSelf: "center",
         borderRadius: 5,
         paddingHorizontal: 5,
-        height: 60,
+        height: 65,
     },
     containerCompleted: {
         backgroundColor: "#9fd1df",
@@ -75,16 +81,22 @@ const Styles = StyleSheet.create({
         alignSelf: "center",
         borderRadius: 5,
         paddingHorizontal: 5,
-        height: 60,
+        height: 65,
     },
     title: {
         fontSize: 20,
         color: "#000000",
         fontWeight: "bold",
+        paddingTop: 5,
     },
     text: {
         fontSize: 15,
         paddingBottom: 5,    
+    },
+    date: {
+        left: 230, 
+        paddingBottom: 5,
+        color: "#0a0a0a",
     },
     textContainer: {
         alignItems: "flex-start",
