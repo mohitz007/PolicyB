@@ -95,7 +95,7 @@ const Styles = StyleSheet.create({
         paddingBottom: 5,    
     },
     date: {
-        left: 230, 
+        left: "70%", 
         paddingBottom: 5,
         color: "#0a0a0a",
         marginBottom: 4,
