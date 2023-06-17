@@ -28,7 +28,7 @@ const Task = ({item}) => {
         dispatch(uncomplete_todo(currTime));
     };
 
-    let date = moment.unix(item.currTime/1000).format('MMMM Do, h:mm a');
+    let date = moment.unix(item.currTime/1000).format('Do MMMM, h:mm a');
     // console.log(date);
 
     return (
@@ -68,7 +68,7 @@ const Styles = StyleSheet.create({
         alignSelf: "center",
         borderRadius: 5,
         paddingHorizontal: 5,
-        height: 65,
+        height: 70,
     },
     containerCompleted: {
         backgroundColor: "#9fd1df",
@@ -81,13 +81,14 @@ const Styles = StyleSheet.create({
         alignSelf: "center",
         borderRadius: 5,
         paddingHorizontal: 5,
-        height: 65,
+        height: 70,
     },
     title: {
         fontSize: 20,
         color: "#000000",
         fontWeight: "bold",
         paddingTop: 5,
+        marginTop: 5,
     },
     text: {
         fontSize: 15,
@@ -97,6 +98,7 @@ const Styles = StyleSheet.create({
         left: 230, 
         paddingBottom: 5,
         color: "#0a0a0a",
+        marginBottom: 4,
     },
     textContainer: {
         alignItems: "flex-start",
